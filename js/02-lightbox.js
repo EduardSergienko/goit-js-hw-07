@@ -16,8 +16,6 @@ function createGaleryItems() {
 }
 galleryContainer.innerHTML = createGaleryItems(galleryItems);
 
-{
-}
 new SimpleLightbox(".gallery a", {
 	captionDelay: "250ms",
 	captionsData: "alt",

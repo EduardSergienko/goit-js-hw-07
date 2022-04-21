@@ -37,10 +37,11 @@ function onGalleryItemClick(evt) {
 	`,
 			{
 				onShow: (instance) => {
-					window.addEventListener("keydown", onEscKeyPress, { once: true });
+					window.addEventListener("keydown", onEscKeyPress);
 					function onEscKeyPress(evt) {
 						if (evt.code === "Escape") {
 							instance.close();
+							this.removeEventListener("keydown", onEscKeyPress);
 							console.log(evt.code);
 						}
 					}
@@ -49,3 +50,38 @@ function onGalleryItemClick(evt) {
 		)
 		.show();
 }
+
+// function onGalleryItemClick(evt) {
+// 	evt.preventDefault();
+// 	if (evt.target.nodeName !== "IMG") {
+// 		return;
+// 	}
+// 	basicLightbox
+// 		.create(
+// 			`
+// 		<img  src="${evt.target.getAttribute(["data-source"])}">
+// 	`,
+// 			{
+// 				onShow: (instance) => {
+// 					window.addEventListener("keydown", onEscKeyPress, { once: true });
+// 					function onEscKeyPress(evt) {
+// 						if (evt.code !== "Escape") {
+// 							instance.close();
+// 							console.log(evt.code);
+// 						}
+// 					}
+// 				},
+// 			}
+// 		)
+// 		.show();
+// }
+
+// onClose: (instance) => {
+// 	window.removeEventListener("keydown", onEscKeyPress);
+// 	function onEscKeyPress(evt) {
+// 		if (evt.code === "Escape") {
+// 			instance.close();
+// 			console.log(evt.code);
+// 		}
+// 	}
+// },
